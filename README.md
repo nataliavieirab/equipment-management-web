@@ -1,126 +1,126 @@
-# Gestão de Equipamentos Web
+# Equipment Management Web App
 
-## Projeto
+## Project
 
-Desenvolvido durante o curso Fullstack da [Academia do Programador](https://www.academiadoprogramador.net) 2026
+Developed during the Fullstack course at [Programming Academy](https://www.academiadoprogramador.net) 2026
 
-## Funcionalidades
+## Features
 
-Junior cuida do estoque de equipamentos na empresa onde trabalha. E sempre controla o inventário dos seus equipamentos e as manutenções que eles já sofreram em uma planilha do Excel.
+Junior is responsible for managing equipment inventory at the company where he works. He has always kept track of equipment and their maintenance history using an Excel spreadsheet.
 
-Desta forma, ele resolveu pedir ajuda do pessoal da Academia do Programador no desenvolvimento de um Software para automatizar o seu serviço.
+Because of that, he asked the Programming Academy team for help in developing a software system to automate this process.
 
-## 1. Controle de Fabricantes
+## 1. Manufacturers Management
 
-#### Requisito 1.1:
+#### Requirement 1.1:
 
-Como funcionário, Junior quer ter a possibilidade de registrar os fabricantes dos equipamentos registrados.
+As an employee, Junior wants to be able to register equipment manufacturers.
 
-- Deve ter um identificador único (id);
-- Deve ter o nome do fabricante;
-- Deve ter o email do fabricante;
-- Deve ter o telefone do fabricante;
+- Must have a unique identifier (id);
+- Must have the manufacturer name;
+- Must have the manufacturer email;
+- Must have the manufacturer phone number;
 
-#### Requisito 1.2:
+#### Requirement 1.2:
 
-Como funcionário Junior quer ter a possibilidade de visualizar todos os fabricantes registrados para controle.
+As an employee, Junior wants to be able to view all registered manufacturers for control purposes.
 
-- Deve ter o nome do fabricante;
-- Deve ter o email do fabricante;
-- Deve ter o telefone do fabricante;
-- Deve ter a quantidade de equipamentos feitos pelo fabricante em registro;
+- Must display the manufacturer name;
+- Must display the manufacturer email;
+- Must display the manufacturer phone number;
+- Must display the number of equipment produced by each manufacturer;
 
-#### Requisito 1.3:
+#### Requirement 1.3:
 
-Como funcionário, Junior quer ter a possibilidade de editar um fabricante que esteja registrado, sendo que ele possa editar todos os campos.
+As an employee, Junior wants to be able to edit a registered manufacturer, being able to update all fields.
 
-- Deve ter os mesmos critérios que o Requisito 3.1.
+- Same criteria as Requirement 3.1.
 
-#### Requisito 1.4:
+#### Requirement 1.4:
 
-Como funcionário, Junior quer ter a possibilidade de excluir um fabricante.
+As an employee, Junior wants to be able to delete a manufacturer.
 
-## 2. Controle de Equipamentos
+## 2. Equipment Management
 
-#### Requisito 2.1:
+#### Requirement 2.1:
 
-Como funcionário, Junior quer ter a possibilidade de registrar equipamentos
+As an employee, Junior wants to be able to register equipment.
 
-- Deve ter identificador único (id)
-- Deve ter um nome com no mínimo 6 caracteres;
-- Deve ter um preço de aquisição;
-- Deve ter uma fabricante;
-- Deve ter uma data de fabricação;
+- Must have a unique identifier (id);
+- Must have a name with at least 6 characters;
+- Must have a purchase price;
+- Must have a manufacturer;
+- Must have a manufacturing date;
 
-#### Requisito 2.2:
+#### Requirement 2.2:
 
-Como funcionário, Junior quer ter a possibilidade de visualizar todos os equipamentos registrados em seu inventário.
+As an employee, Junior wants to be able to view all equipment registered in his inventory.
 
-- Deve mostrar o id;
-- Deve mostrar o nome;
-- Deve mostrar o preço de aquisição;
-- Deve mostrar a fabricante;
-- Deve mostrar a data de fabricação;
+- Must display the id;
+- Must display the name;
+- Must display the purchase price;
+- Must display the manufacturer;
+- Must display the manufacturing date;
 
-#### Requisito 2.3:
+#### Requirement 2.3:
 
-Como funcionário, Junior quer ter a possibilidade de editar um equipamento, sendo que ele possa editar todos os campos.
+As an employee, Junior wants to be able to edit equipment, being able to update all fields.
 
-- Deve ter os mesmos critérios que o Requisito 1.1.
+- Same criteria as Requirement 1.1.
 
-#### Requisito 2.4:
+#### Requirement 2.4:
 
-Como funcionário, Junior quer ter a possibilidade de excluir um equipamento que esteja registrado.
+As an employee, Junior wants to be able to delete a registered equipment item.
 
-- A lista de equipamentos deve ser atualizada
+- The equipment list must be updated accordingly.
 
-## 2. Controle de Chamados
+## 3. Service Tickets Management
 
-#### Requisito 3.1:
+#### Requirement 3.1:
 
-Como funcionário Junior quer ter a possibilidade de registrar os chamados de manutenções que são efetuadas nos equipamentos registrados
+As an employee, Junior wants to be able to register maintenance service tickets for the registered equipment.
 
-- Deve ter um identificador único (id);
-- Deve ter a título do chamado;
-- Deve ter a descrição do chamado;
-- Deve ter um equipamento;
-- Deve ter uma data de abertura;
+- Must have a unique identifier (id);
+- Must have a ticket title;
+- Must have a ticket description;
+- Must have an associated equipment;
+- Must have an opening date;
 
-#### Requisito 3.2:
+#### Requirement 3.2:
 
-Como funcionário Junior quer ter a possibilidade de visualizar todos os chamados registrados para controle.
+As an employee, Junior wants to be able to view all registered service tickets.
 
-- Deve mostrar o título do chamado;
-- Deve mostrar o equipamento;
-- Deve mostrar a data de abertura;
-- Número de dias que o chamado está aberto
+- Must display the ticket title;
+- Must display the equipment;
+- Must display the opening date;
+- Must display the number of days the ticket has been open;
 
-#### Requisito 3.3:
+#### Requirement 3.3:
 
-Como funcionário Junior quer ter a possibilidade de editar um chamado que esteja registrado, sendo que ele pode editar todos os campos.
+As an employee, Junior wants to be able to edit a registered service ticket, being able to update all fields.
 
-- Deve ter os mesmos critérios que o Requisito 2.1.
+- Same criteria as Requirement 2.1.
 
-#### Requisito 3.4:
+#### Requirement 3.4:
 
-Como funcionário Junior quer ter a possibilidade de excluir um chamado.
+As an employee, Junior wants to be able to delete a service ticket.
 
-## Como utilizar
+## How to Use
 
-1. Clone o repositório ou baixe o código fonte.
-2. Abra o terminal ou o prompt de comando e navegue até a pasta raiz
-3. Utilize o comando abaixo para restaurar as dependências do projeto.
+1. Clone the repository or download the source code.
+2. Open the terminal or command prompt and navigate to the root folder.
+3. Run the command below to restore project dependencies.
 
-    ```bash
-    dotnet restore
-    ```
+```bash
+dotnet restore
+```
 
-4. Para executar o projeto compilando em tempo real
+4. Run the project with live compilation.
 
-    ```bash
-    dotnet run --project GestaoDeEquipamentosWeb.ConsoleApp
-    ```
+```bash
+dotnet run --project GestaoDeEquipamentosWeb.ConsoleApp
+```
 
-## Requisitos
+## Requirements
 
 - .NET 10.0 SDK
