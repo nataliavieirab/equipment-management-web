@@ -1,0 +1,39 @@
+﻿@using EquipmentManagement.ConsoleApp.Manufacturers
+
+@model List<Manufacturer>
+
+<h1>Gestão de Equipamentos</h1>
+
+<hr>
+
+<a href="/Manufacturer/List">Controle de Fabricantes</a> -
+<a href="/Equipment/List">Controle de Equipamentos</a> -
+<a href="/Ticket/List">Controle de Chamados</a>
+
+<hr>
+
+<h2>Listagem de Fabricamtes</h2>
+
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Nome</td>
+      <td>E-mail</td>
+      <td>Telefone</td>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (Manufacturer m in Model)
+    {
+      <tr>
+        <td>@m.Id</td>
+        <td>@m.Name</td>
+        <td>@m.Email</td>
+        <td>@m.Phone</td>
+      </tr>
+    }
+  </tbody>
+</table>
