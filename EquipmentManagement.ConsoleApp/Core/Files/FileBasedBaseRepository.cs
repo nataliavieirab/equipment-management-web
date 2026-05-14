@@ -1,6 +1,5 @@
 namespace EquipmentManagement.ConsoleApp.Core.Files;
 
-
 public abstract class FileBasedBaseRepository<T> where T : BaseEntity<T>
 {
   protected ContextJson context;
