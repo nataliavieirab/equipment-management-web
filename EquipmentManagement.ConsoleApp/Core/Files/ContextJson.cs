@@ -37,7 +37,7 @@ public sealed class ContextJson
     File.WriteAllText(filePath, jsonString);
   }
 
-  public void Carregar()
+  public void Load()
   {
     if (!File.Exists(filePath))
       return;
