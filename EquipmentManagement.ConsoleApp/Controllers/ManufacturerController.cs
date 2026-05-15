@@ -43,4 +43,27 @@ public class ManufacturerController : Controller
 
     return RedirectToAction(nameof(List));
   }
+
+  [HttpGet]
+  public ActionResult Edit(string id)
+  {
+
+    Manufacturer manufacturer = manufacturerRepository.FindById(id);
+
+    if (manufacturer == null)
+      return RedirectToAction(nameof(List));
+
+    return View(manufacturer);
+  }
+
+  [HttpPost]
+  public ActionResult Edit(string id, string name, string email, string phone)
+  {
+
+    Manufacturer manufacturer = new Manufacturer(name, email, phone);
+
+    manufacturerRepository.Edit(id, manufacturer);
+
+    return RedirectToAction(nameof(List));
+  }
 }

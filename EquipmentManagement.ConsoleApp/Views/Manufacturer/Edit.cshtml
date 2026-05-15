@@ -1,0 +1,43 @@
+@using EquipmentManagement.ConsoleApp.Manufacturers
+@model Manufacturer;
+
+<h1>Gestão de Equipamentos</h1>
+
+<hr>
+
+<a href="/Manufacturer/List">Controle de Fabricantes</a> -
+<a href="/Equipment/List">Controle de Equipamentos</a> -
+<a href="/Ticket/List">Controle de Chamados</a>
+
+<hr>
+
+<h2>Edição de Fabricante</h2>
+
+<form action="/Manufacturer/Edit/@Model.Id" method="post">
+  <div>
+    <label>Nome</label>
+    <br>
+    <input type="text" name="Name" value="@Model.Name">
+  </div>
+
+  <br>
+
+  <div>
+    <label>Email</label>
+    <br>
+    <input type="email" name="Email" value="@Model.Email">
+  </div>
+
+  <br>
+
+  <div>
+    <label>Telefone</label>
+    <br>
+    <input type="text" name="Phone" value="@Model.Phone">
+  </div>
+
+  <hr>
+
+  <a href="/Manufacturer/List">Voltar</a>
+  <button type="submit">Confirmar</button>
+</form>
