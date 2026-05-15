@@ -6,31 +6,28 @@
 @using EquipmentManagement.ConsoleApp.Manufacturers
 @model Manufacturer;
 
-<form action="/Manufacturer/Edit/@Model.Id" method="post">
-  <div>
+<form class="form" action="/Manufacturer/Edit/@Model.Id" method="post">
+  
+  <div class="form-field">
     <label>Nome</label>
     <br>
     <input type="text" name="Name" value="@Model.Name">
   </div>
 
-  <br>
-
-  <div>
+  <div class="form-field">
     <label>Email</label>
     <br>
     <input type="email" name="Email" value="@Model.Email">
   </div>
 
-  <br>
-
-  <div>
+  <div class="form-field">
     <label>Telefone</label>
     <br>
     <input type="text" name="Phone" value="@Model.Phone">
   </div>
 
-  <hr>
-
-  <a href="/Manufacturer/List">Voltar</a>
-  <button type="submit">Confirmar</button>
+  <div class="form-actions">
+    <a href="/Manufacturer/List">Voltar</a>
+    <button type="submit">Confirmar</button>
+  </div>
 </form>

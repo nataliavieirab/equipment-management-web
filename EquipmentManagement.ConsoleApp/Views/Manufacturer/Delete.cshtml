@@ -7,30 +7,29 @@
 @model Manufacturer;
 
 <form action="/Manufacturer/Delete/@Model.Id" method="post">
-  <div>
+  
+  <p class="form-alert">Deseja realmente excluir este fabricante?</p>
+
+  <div class="form-field">
     <label>Nome</label>
     <br>
     <input type="text" name="Name" value="@Model.Name" disabled>
   </div>
 
-  <br>
-
-  <div>
+  <div class="form-field">
     <label>Email</label>
     <br>
     <input type="email" name="Email" value="@Model.Email" disabled>
   </div>
 
-  <br>
-
-  <div>
+  <div class="form-field">
     <label>Telefone</label>
     <br>
     <input type="text" name="Phone" value="@Model.Phone" disabled>
   </div>
 
-  <hr>
-
-  <a href="/Manufacturer/List">Voltar</a>
-  <button type="submit">Confirmar</button>
+  <div class="form-actions">
+    <a href="/Manufacturer/List">Voltar</a>
+    <button type="submit">Confirmar</button>
+  </div>
 </form>
