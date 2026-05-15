@@ -6,20 +6,16 @@
 @using EquipmentManagement.ConsoleApp.Manufacturers
 @model List<Manufacturer>
 
-<hr>
-<a href="/Manufacturer/Register">Cadastrar Novo</a>
-<hr>
+<a class="btn-register" href="/Manufacturer/Register">Cadastrar Novo</a>
 
-<br>
-
-<table>
+<table class="records">
   <thead>
     <tr>
-      <td>ID</td>
-      <td>Nome</td>
-      <td>E-mail</td>
-      <td>Telefone</td>
-      <td>Ações</td>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>E-mail</th>
+      <th>Telefone</th>
+      <th>Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -30,8 +26,10 @@
         <td>@m.Name</td>
         <td>@m.Email</td>
         <td>@m.Phone</td>
-        <td><a href="/Manufacturer/Edit/@m.Id">Editar</a></td>
-        <td><a href="/Manufacturer/Delete/@m.Id">Excluir</a></td>
+      <td>
+        <a href="/Manufacturer/Edit/@m.Id">Editar</a>
+        <a href="/Manufacturer/Delete/@m.Id">Excluir</a>
+      </td>
       </tr>
     }
   </tbody>
