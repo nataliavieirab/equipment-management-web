@@ -18,6 +18,7 @@ public class ManufacturerController : Controller
       new FileBasedManufacturerRepository(context);
   }
 
+  [HttpGet]
   public ActionResult List()
   {
     List<Manufacturer> manufacturers = manufacturerRepository.FindAll();
@@ -25,4 +26,21 @@ public class ManufacturerController : Controller
     return View(manufacturers);
   }
 
+  [HttpGet]
+  public ActionResult Register()
+  {
+    List<Manufacturer> manufacturers = manufacturerRepository.FindAll();
+
+    return View(manufacturers);
+  }
+
+  [HttpPost]
+  public ActionResult Register(string name, string email, string phone)
+  {
+    Manufacturer manufacturer = new(name, email, phone);
+
+    manufacturerRepository.Register(manufacturer);
+
+    return RedirectToAction(nameof(List));
+  }
 }
