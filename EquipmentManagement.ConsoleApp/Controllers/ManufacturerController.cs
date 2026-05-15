@@ -66,4 +66,31 @@ public class ManufacturerController : Controller
 
     return RedirectToAction(nameof(List));
   }
+
+
+  [HttpGet]
+  public ActionResult Delete(string id)
+  {
+
+    Manufacturer manufacturer = manufacturerRepository.FindById(id);
+
+    if (manufacturer == null)
+      return RedirectToAction(nameof(List));
+
+    return View(manufacturer);
+  }
+
+  [HttpPost]
+  [ActionName("Delete")]
+  public ActionResult DeleteSuccess(string id)
+  {
+    Manufacturer? manufacturer = manufacturerRepository.FindById(id);
+
+    if (manufacturer == null)
+      return RedirectToAction(nameof(List));
+
+    manufacturerRepository.Delete(manufacturer);
+
+    return RedirectToAction(nameof(List));
+  }
 }
