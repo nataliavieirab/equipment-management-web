@@ -12,7 +12,6 @@
     <Folder Include="Tickets\" />
     <Folder Include="Equipments\" />
     <Folder Include="Manufacturers\" />
-    <Folder Include="Views/" />
     <Folder Include="Views/Home/" />
     <Folder Include="Views/Manufacturer/" />
   </ItemGroup>
