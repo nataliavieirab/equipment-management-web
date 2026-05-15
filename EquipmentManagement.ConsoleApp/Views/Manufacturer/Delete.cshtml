@@ -1,11 +1,10 @@
 @{
     Layout = "_Layout";
+    ViewBag.Title = "Exclusão de Fabricante";
 }
 
 @using EquipmentManagement.ConsoleApp.Manufacturers
 @model Manufacturer;
-
-<h2>Exclusão de Fabricante</h2>
 
 <form action="/Manufacturer/Delete/@Model.Id" method="post">
   <div>

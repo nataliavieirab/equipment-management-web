@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gestão de Equipamentos</title>
+        <title>@ViewBag.Title - Gestão de Equipamentos</title>
     </head>
     <body>
         <nav>
@@ -11,12 +12,16 @@
 
             <hr>
                 <a href="/">Início</a> -
-                <a href="/Fabricante/Listar">Controle de Fabricantes</a> -
-                <a href="/Equipamento/Listar">Controle de Equipamentos</a> -
-                <a href="/Chamado/Listar">Controle de Chamados</a> -
+                <a href="/Manufacturer/List">Controle de Fabricantes</a> -
+                <a href="/Equipment/List">Controle de Equipamentos</a> -
+                <a href="/Ticket/List">Controle de Chamados</a> -
                 <a href="https://www.academiadoprogramador.net" target="_blank">Academia do Programador</a>
             <hr>
         </nav>
+
+        <header>
+            <h2>@ViewBag.Title</h2>
+        </header>
 
         <main>
             @RenderBody()
