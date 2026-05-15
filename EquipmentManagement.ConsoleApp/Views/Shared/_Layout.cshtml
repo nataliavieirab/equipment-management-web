@@ -3,26 +3,28 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Gestão de Equipamentos</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="~/css/styles.css">
         <title>@ViewBag.Title - Gestão de Equipamentos</title>
     </head>
     <body>
         <nav>
-            <h1>Gestão de Equipamentos</h1>
+            <h3>Gestão de Equipamentos</h3>
 
-            <hr>
-                <a href="/">Início</a> -
-                <a href="/Manufacturer/List">Controle de Fabricantes</a> -
-                <a href="/Equipment/List">Controle de Equipamentos</a> -
-                <a href="/Ticket/List">Controle de Chamados</a> -
-                <a href="https://www.academiadoprogramador.net" target="_blank">Academia do Programador</a>
-            <hr>
+            <div class="links-navbar">
+                <a href="/">Início</a> 
+                <a href="/Manufacturer/List">Controle de Fabricantes</a> 
+                <a href="/Equipment/List">Controle de Equipamentos</a> 
+                <a href="/Ticket/List">Controle de Chamados</a> 
+            </div>
         </nav>
 
         <header>
             <h2>@ViewBag.Title</h2>
         </header>
-
+ 
         <main>
             @RenderBody()
         </main>

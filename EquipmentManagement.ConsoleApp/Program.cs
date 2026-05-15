@@ -10,6 +10,7 @@ builder.Services.AddControllersWithViews();
 WebApplication app = builder.Build();
 
 // Middlewares - São funções que executam em cada chamada que o servidor vai receber
+app.UseStaticFiles();
 app.UseRouting();
 app.MapDefaultControllerRoute();
 
