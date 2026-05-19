@@ -45,9 +45,13 @@ public class ManufacturerController : Controller
   }
 
   [HttpPost]
-  public ActionResult Register(string name, string email, string phone)
+  public ActionResult Register(RegisterManufacturerViewModel registerViewModel)
   {
-    Manufacturer manufacturer = new(name, email, phone);
+    Manufacturer manufacturer = new(
+      registerViewModel.Name,
+      registerViewModel.Email,
+      registerViewModel.Phone
+    );
 
     manufacturerRepository.Register(manufacturer);
 
@@ -58,21 +62,32 @@ public class ManufacturerController : Controller
   public ActionResult Edit(string id)
   {
 
-    Manufacturer manufacturer = manufacturerRepository.FindById(id);
+    Manufacturer? manufacturer = manufacturerRepository.FindById(id);
 
     if (manufacturer == null)
       return RedirectToAction(nameof(List));
 
-    return View(manufacturer);
+    EditManufacturerViewModel editViewModel = new(
+      id,
+      manufacturer.Name,
+      manufacturer.Email,
+      manufacturer.Phone
+    );
+
+    return View(editViewModel);
   }
 
   [HttpPost]
-  public ActionResult Edit(string id, string name, string email, string phone)
+  public ActionResult Edit(EditManufacturerViewModel editViewModel)
   {
 
-    Manufacturer manufacturer = new Manufacturer(name, email, phone);
+    Manufacturer manufacturer = new Manufacturer(
+      editViewModel.Name,
+      editViewModel.Email,
+      editViewModel.Phone
+    );
 
-    manufacturerRepository.Edit(id, manufacturer);
+    manufacturerRepository.Edit(editViewModel.Id, manufacturer);
 
     return RedirectToAction(nameof(List));
   }
@@ -82,19 +97,26 @@ public class ManufacturerController : Controller
   public ActionResult Delete(string id)
   {
 
-    Manufacturer manufacturer = manufacturerRepository.FindById(id);
+    Manufacturer? manufacturer = manufacturerRepository.FindById(id);
 
     if (manufacturer == null)
       return RedirectToAction(nameof(List));
 
-    return View(manufacturer);
+    DeleteManufacturerViewModel deleteViewModel = new DeleteManufacturerViewModel(
+      id,
+      manufacturer.Name,
+      manufacturer.Email,
+      manufacturer.Phone
+    );
+
+    return View(deleteViewModel);
   }
 
   [HttpPost]
   [ActionName("Delete")]
-  public ActionResult DeleteSuccess(string id)
+  public ActionResult SuccessDelete(DeleteManufacturerViewModel deleteViewModel)
   {
-    Manufacturer? manufacturer = manufacturerRepository.FindById(id);
+    Manufacturer? manufacturer = manufacturerRepository.FindById(deleteViewModel.Id);
 
     if (manufacturer == null)
       return RedirectToAction(nameof(List));
