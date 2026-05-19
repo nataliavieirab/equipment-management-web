@@ -1,10 +1,11 @@
-﻿@{
+﻿@using EquipmentManagement.ConsoleApp.Models
+
+@{
     Layout = "_Layout";
     ViewBag.Title = "Listagem de Fabricantes";
 }
 
-@using EquipmentManagement.ConsoleApp.Manufacturers
-@model List<Manufacturer>
+@model List<ListManufacturerViewModel>
 
 <a class="btn-register" href="/Manufacturer/Register">Cadastrar Novo</a>
 
@@ -19,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach (Manufacturer m in Model)
+    @foreach (ListManufacturerViewModel m in Model)
     {
       <tr>
         <td>@m.Id</td>

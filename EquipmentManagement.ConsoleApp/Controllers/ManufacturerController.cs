@@ -1,6 +1,7 @@
 using EquipmentManagement.ConsoleApp.Core;
 using EquipmentManagement.ConsoleApp.Core.Files;
 using EquipmentManagement.ConsoleApp.Manufacturers;
+using EquipmentManagement.ConsoleApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EquipmentManagement.ConsoleApp.Controllers;
@@ -23,7 +24,16 @@ public class ManufacturerController : Controller
   {
     List<Manufacturer> manufacturers = manufacturerRepository.FindAll();
 
-    return View(manufacturers);
+    List<ListManufacturerViewModel> listViewModels = [];
+
+    foreach(Manufacturer m in manufacturers)
+    {
+      ListManufacturerViewModel viewModel = new(m.Id, m.Name, m.Email, m.Phone);
+
+      listViewModels.Add(viewModel);
+    }
+
+    return View(listViewModels);
   }
 
   [HttpGet]
