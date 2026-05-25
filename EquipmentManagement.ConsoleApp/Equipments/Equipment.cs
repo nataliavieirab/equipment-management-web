@@ -38,9 +38,6 @@ public class Equipment : BaseEntity<Equipment>
     if (ManufacturingDate > DateTime.Now)
       errors.Add("O campo \"Data de Fabricação\" deve conter uma data do passado.");
 
-    if (Manufacturer == null)
-      errors.Add("O campo \"Fabricante\" deve ser preenchido.");
-
     return errors;
   }
 
