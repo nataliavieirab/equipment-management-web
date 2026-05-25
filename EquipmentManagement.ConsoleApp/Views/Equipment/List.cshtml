@@ -1,0 +1,38 @@
+@using EquipmentManagement.ConsoleApp.Models
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Listagem de Equipamentos";
+}
+
+@model List<ListEquipmentsViewModel>
+
+<a class="btn-register" href="/Equipment/Register">Cadastrar Novo</a>
+
+<table class="records">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>E-mail</th>
+      <th>Telefone</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (ListEquipmentsViewModel e in Model)
+    {
+      <tr>
+        <td>@e.Id</td>
+        <td>@e.Name</td>
+        <td>@e.PurchasePrice</td>
+        <td>@e.ManufacturingDate</td>
+        <td>@e.Manufacturer</td>
+      <td>
+        <a href="/Equipment/Edit/@e.Id">Editar</a>
+        <a href="/Equipment/Delete/@e.Id">Excluir</a>
+      </td>
+      </tr>
+    }
+  </tbody>
+</table>
