@@ -8,21 +8,21 @@ namespace EquipmentManagement.ConsoleApp.Controllers;
 
 public class ManufacturerController : Controller
 {
-  private readonly IRepository<Manufacturer> manufacturerRepository;
+  private readonly IRepository<Manufacturer> _manufacturerRepository;
 
   public ManufacturerController()
   {
     ContextJson context = new ContextJson();
     context.Load();
 
-    manufacturerRepository =
+    _manufacturerRepository =
       new FileBasedManufacturerRepository(context);
   }
 
   [HttpGet]
   public ActionResult List()
   {
-    List<Manufacturer> manufacturers = manufacturerRepository.FindAll();
+    List<Manufacturer> manufacturers = _manufacturerRepository.FindAll();
 
     List<ListManufacturerViewModel> listViewModels = [];
 
@@ -39,7 +39,7 @@ public class ManufacturerController : Controller
   [HttpGet]
   public ActionResult Register()
   {
-    List<Manufacturer> manufacturers = manufacturerRepository.FindAll();
+    List<Manufacturer> manufacturers = _manufacturerRepository.FindAll();
 
     return View(manufacturers);
   }
@@ -53,7 +53,7 @@ public class ManufacturerController : Controller
       registerViewModel.Phone
     );
 
-    manufacturerRepository.Register(manufacturer);
+    _manufacturerRepository.Register(manufacturer);
 
     return RedirectToAction(nameof(List));
   }
@@ -62,7 +62,7 @@ public class ManufacturerController : Controller
   public ActionResult Edit(string id)
   {
 
-    Manufacturer? manufacturer = manufacturerRepository.FindById(id);
+    Manufacturer? manufacturer = _manufacturerRepository.FindById(id);
 
     if (manufacturer == null)
       return RedirectToAction(nameof(List));
@@ -87,7 +87,7 @@ public class ManufacturerController : Controller
       editViewModel.Phone
     );
 
-    manufacturerRepository.Edit(editViewModel.Id, manufacturer);
+    _manufacturerRepository.Edit(editViewModel.Id, manufacturer);
 
     return RedirectToAction(nameof(List));
   }
@@ -97,7 +97,7 @@ public class ManufacturerController : Controller
   public ActionResult Delete(string id)
   {
 
-    Manufacturer? manufacturer = manufacturerRepository.FindById(id);
+    Manufacturer? manufacturer = _manufacturerRepository.FindById(id);
 
     if (manufacturer == null)
       return RedirectToAction(nameof(List));
@@ -116,12 +116,12 @@ public class ManufacturerController : Controller
   [ActionName("Delete")]
   public ActionResult SuccessDelete(DeleteManufacturerViewModel deleteViewModel)
   {
-    Manufacturer? manufacturer = manufacturerRepository.FindById(deleteViewModel.Id);
+    Manufacturer? manufacturer = _manufacturerRepository.FindById(deleteViewModel.Id);
 
     if (manufacturer == null)
       return RedirectToAction(nameof(List));
 
-    manufacturerRepository.Delete(manufacturer);
+    _manufacturerRepository.Delete(manufacturer);
 
     return RedirectToAction(nameof(List));
   }
