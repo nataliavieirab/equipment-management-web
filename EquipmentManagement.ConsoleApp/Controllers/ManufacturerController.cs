@@ -24,11 +24,11 @@ public class ManufacturerController : Controller
   {
     List<Manufacturer> manufacturers = _manufacturerRepository.FindAll();
 
-    List<ListManufacturerViewModel> listViewModels = [];
+    List<ListManufacturersViewModel> listViewModels = [];
 
     foreach(Manufacturer m in manufacturers)
     {
-      ListManufacturerViewModel viewModel = new(m.Id, m.Name, m.Email, m.Phone);
+      ListManufacturersViewModel viewModel = new(m.Id, m.Name, m.Email, m.Phone);
 
       listViewModels.Add(viewModel);
     }
