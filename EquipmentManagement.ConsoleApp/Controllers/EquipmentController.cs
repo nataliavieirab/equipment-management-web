@@ -115,7 +115,37 @@ public class EquipmentController : Controller
 
     return RedirectToAction(nameof(List));
   }
-  
+
+  [HttpGet]
+  public ActionResult Delete(string id)
+  {
+    Equipment? equipment = _equipmentRepository.FindById(id);
+
+    if (equipment == null)
+      return RedirectToAction(nameof(List));
+
+    DeleteEquipmentViewModel deleteViewModel = new DeleteEquipmentViewModel(
+      id,
+      equipment.Name,
+      equipment.PurchasePrice,
+      equipment.ManufacturingDate,
+      equipment.Manufacturer.Name
+    );
+
+    return View(deleteViewModel);
+  }
+
+  [HttpPost]
+  [ActionName("Delete")]
+  public ActionResult SuccessDelete(DeleteEquipmentViewModel deleteViewModel)
+  {
+    Equipment? equipment = _equipmentRepository.FindById(deleteViewModel.Id);
+
+    if (equipment != null)
+      _equipmentRepository.Delete(equipment);
+
+    return RedirectToAction(nameof(List));
+  }
   private List<ListManufacturersViewModel> LoadManufacturers()
   {
     List<Manufacturer> manufacturers = _manufacturerRepository.FindAll();

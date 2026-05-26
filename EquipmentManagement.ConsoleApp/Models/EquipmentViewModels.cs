@@ -22,3 +22,11 @@ public record EditEquipmentViewModel(
   DateTime ManufacturingDate,
   string ManufacturerId
 );
+
+public record DeleteEquipmentViewModel(
+  string Id,
+  string Name,
+  decimal PurchasePrice,
+  DateTime ManufacturingDate,
+  string Manufacturer
+);
