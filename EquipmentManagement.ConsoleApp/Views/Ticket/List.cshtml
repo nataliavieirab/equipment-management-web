@@ -1,0 +1,39 @@
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Listagem de Chamados";
+}
+
+@model List<ListTicketsViewModel>
+ 
+<a class="btn-register" asp-action="/Register">Cadastrar Novo</a> 
+
+<table class="records">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Equipamento</th>
+      <th>Data de Abertura</th>
+      <th>Tempo Decorrido</th>
+      <th>Status</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (ListTicketsViewModel t in Model)
+    {
+      <tr>
+        <td data-label="ID">@t.Id</td>
+        <td data-label="Title">@t.Title</td>
+        <td data-label="Equipment">@t.Equipment</td>
+        <td data-label="Opening Date">@t.OpeningDate.ToString("dd/MM/yyyy")</td>
+        <td data-label="Elapsed Days">@t.ElapsedDays dia(s)</td>
+        <td data-label="Status">@(t.IsComplete ? "Concluído" : "Aberto")</td>
+        <td data-label="Actions">
+          <a asp-action="Edit" asp-route-id="@t.Id">Editar</a>
+          <a asp-action="Delete" asp-route-id="@t.Id">Excluir</a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
