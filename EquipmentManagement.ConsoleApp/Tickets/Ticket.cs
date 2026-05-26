@@ -22,8 +22,8 @@ public class Ticket : BaseEntity<Ticket>
   public Ticket(string title, Equipment equipment, string? description = null) : this()
   {
     Title = title;
-    Equipment = equipment;
     Description = description;
+    Equipment = equipment;
   }
 
   public Ticket() { }

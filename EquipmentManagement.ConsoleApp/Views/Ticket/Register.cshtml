@@ -1,0 +1,40 @@
+@{
+  Layout = "_Layout";
+  ViewBag.Title = "Cadastro de Chamado";
+
+  List<SelectListItem> selectEquipments = ViewBag.Equipments;
+}
+
+@model RegisterTicketViewModel;
+
+<form class="form" asp-action="Register" method="post">
+
+  <div class="form-field">
+    <label asp-for="Title">Título</label>
+    <br>
+    <input asp-for="Title" type="text">
+    <span asp-validation-for="Title" class="form-validation-field"></span>
+  </div>
+
+  <div class="form-field">
+    <label asp-for="Description">Descrição</label>
+    <br>
+    <textarea asp-for="Description"></textarea>
+    <span asp-validation-for="Description" class="form-validation-field"></span>
+
+  </div>
+
+  <div class="form-field">
+    <label asp-for="EquipmentId">Equipamento</label>
+    <br>
+    <select asp-for="EquipmentId" asp-items="selectEquipments">
+      <option value="">Selecione um equipamento</option>
+    </select>
+    <span asp-validation-for="EquipmentId" class="form-validation-field"></span>
+  </div>
+
+  <div class="form-actions">
+    <a asp-action="List">Voltar</a>
+    <button type="submit">Confirmar</button>
+  </div>
+</form>

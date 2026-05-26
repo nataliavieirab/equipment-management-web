@@ -1,15 +1,17 @@
 using EquipmentManagement.ConsoleApp.Core;
 using EquipmentManagement.ConsoleApp.Core.Files;
+using EquipmentManagement.ConsoleApp.Equipments;
 using EquipmentManagement.ConsoleApp.Models;
 using EquipmentManagement.ConsoleApp.Tickets;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EquipmentManagement.ConsoleApp.Controllers;
 
 public class TicketController : Controller
 {
   private readonly IRepository<Ticket> _ticketRepository;
-  // private readonly IRepository<Equipment> _equipmentRepository;
+  private readonly IRepository<Equipment> _equipmentRepository;
 
   public TicketController()
   {
@@ -17,7 +19,7 @@ public class TicketController : Controller
     context.Load();
 
     _ticketRepository = new FileBasedTicketRepository(context);
-    // _equipmentRepository = new FileBasedEquipmentRepository(context);
+    _equipmentRepository = new FileBasedEquipmentRepository(context);
   }
 
   [HttpGet]
@@ -42,6 +44,73 @@ public class TicketController : Controller
     }
 
     return View(viewTickets);
+  }
+
+  [HttpGet]
+  public ActionResult Register()
+  {
+    ViewBag.Equipments = LoadEquipments();
+
+    RegisterTicketViewModel registerViewModel = new RegisterTicketViewModel(
+      string.Empty,
+      null,
+      string.Empty
+    );
+
+    return View(registerViewModel);
+  }
+
+  [HttpPost]
+  public ActionResult Register(RegisterTicketViewModel registerViewModel)
+  {
+
+    Equipment? equipment = _equipmentRepository.FindById(registerViewModel.EquipmentId);
+
+    if (!string.IsNullOrEmpty(registerViewModel.EquipmentId) && equipment == null)
+    {
+      ModelState.AddModelError(
+        nameof(registerViewModel.EquipmentId),
+        "Selecione um equipamento válido"
+      );
+    }
+
+    if (!ModelState.IsValid)
+    {
+      ViewBag.Equipments = LoadEquipments();
+      
+      return View(registerViewModel);
+    }
+
+    Ticket ticket = new Ticket(
+      registerViewModel.Title,
+      equipment,
+      registerViewModel.Description
+
+
+    );
+
+    _ticketRepository.Register(ticket);
+
+    return RedirectToAction(nameof(List));
+  }
+
+  private List<SelectListItem> LoadEquipments()
+  {
+    List<Equipment> equipments = _equipmentRepository.FindAll();
+
+    List<SelectListItem> selectEquipments = new List<SelectListItem>();
+
+    foreach (Equipment e in equipments)
+    {
+      SelectListItem selectEquipmentViewModel = new SelectListItem(
+        e.Name,
+        e.Id
+      );
+
+      selectEquipments.Add(selectEquipmentViewModel);
+    }
+
+    return selectEquipments;
   }
 
 }
