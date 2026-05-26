@@ -1,9 +1,8 @@
-@using EquipmentManagement.ConsoleApp.Models
 @{
     Layout = "_Layout";
-  ViewBag.Title = "Edição de Equipamento";
+    ViewBag.Title = "Edição de Equipamento";
 
-  List<ListManufacturersViewModel> manufacturers = ViewBag.Manufacturers;
+    List<ListManufacturersViewModel> manufacturers = ViewBag.Manufacturers;
 }
 
 <form class="form" action="/Equipment/Edit/@Model.Id" method="post">
