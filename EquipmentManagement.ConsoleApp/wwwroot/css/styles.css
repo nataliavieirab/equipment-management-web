@@ -113,7 +113,8 @@ nav {
 }
 
 .form-field input,
-.form-field select {
+.form-field select, 
+.form-field textarea {
     width: 100%;
     box-sizing: border-box;
     border: 1px solid rgba(152, 62, 209, 0.45);
@@ -126,12 +127,15 @@ nav {
 }
 
 .form-field input:focus,
-.form-field select:focus {
+.form-field select:focus,
+.form-field textarea:focus {
     border-color: rgb(152, 62, 209);
     outline: 3px solid rgba(152, 62, 209, 0.16);
 }
 
-.form-field input:disabled {
+.form-field input:disabled,
+.form-field select:disabled,
+.form-field textarea:disabled {
     background-color: rgba(255, 255, 255, 0.35);
     color: rgba(55, 44, 59, 0.7);
 }
@@ -170,5 +174,19 @@ nav {
     padding: 14px 16px;
     background-color: rgba(152, 62, 209, 0.1);
     color: rgb(55, 44, 59);
+    font-weight: 600;
+}
+
+.form-validation-summary {
+    margin-bottom: 18px;
+    color: rgb(160, 44, 74);
+    font-weight: 600;
+}
+
+.form-validation-field {
+    display: block;
+    margin-top: 7px;
+    color: rgb(160, 44, 74);
+    font-size: 0.9rem;
     font-weight: 600;
 }
