@@ -85,8 +85,6 @@ public class TicketController : Controller
       registerViewModel.Title,
       equipment,
       registerViewModel.Description
-
-
     );
 
     _ticketRepository.Register(ticket);
@@ -94,6 +92,57 @@ public class TicketController : Controller
     return RedirectToAction(nameof(List));
   }
 
+  [HttpGet]
+  public ActionResult Edit(string id)
+  {
+    Ticket? ticket = _ticketRepository.FindById(id);
+
+    if (ticket == null)
+      return RedirectToAction(nameof(List));
+
+    EditTicketViewModel editViewModel = new EditTicketViewModel(
+      ticket.Id,
+      ticket.Title,
+      ticket.Description,
+      ticket.Equipment.Id
+    );
+
+    ViewBag.Equipments = LoadEquipments();
+
+    return View(editViewModel);
+  }
+  
+  [HttpPost]
+  public ActionResult Edit(EditTicketViewModel editViewModel)
+  {
+    Equipment? equipment = _equipmentRepository.FindById(editViewModel.EquipmentId);
+
+    if (!string.IsNullOrEmpty(editViewModel.EquipmentId) && equipment == null)
+    {
+      ModelState.AddModelError(
+        nameof(editViewModel.EquipmentId),
+        "Selecione um equipamento válido"
+      );
+    }
+
+    if (!ModelState.IsValid)
+    {
+      ViewBag.Equipments = LoadEquipments();
+      
+      return View(editViewModel);
+    }
+
+    Ticket ticket = new Ticket(
+      editViewModel.Title,
+      equipment,
+      editViewModel.Description
+    );
+
+    _ticketRepository.Edit(editViewModel.Id, ticket);
+
+    return RedirectToAction(nameof(List));
+  }
+  
   private List<SelectListItem> LoadEquipments()
   {
     List<Equipment> equipments = _equipmentRepository.FindAll();
@@ -112,5 +161,4 @@ public class TicketController : Controller
 
     return selectEquipments;
   }
-
 }
