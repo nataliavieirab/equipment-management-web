@@ -8,7 +8,15 @@ public record ListEquipmentsViewModel(
   string Manufacturer
 );
 
-public record RegistertEquipmentsViewModel(
+public record RegisterEquipmentViewModel(
+  string Name,
+  decimal PurchasePrice,
+  DateTime ManufacturingDate,
+  string ManufacturerId
+);
+
+public record EditEquipmentViewModel(
+  string Id,
   string Name,
   decimal PurchasePrice,
   DateTime ManufacturingDate,

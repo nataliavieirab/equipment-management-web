@@ -55,7 +55,7 @@ public class EquipmentController : Controller
   }
 
   [HttpPost]
-  public ActionResult Register(RegistertEquipmentsViewModel registerViewModel)
+  public ActionResult Register(RegisterEquipmentViewModel registerViewModel)
   {
 
     Manufacturer? manufacturer = _manufacturerRepository.FindById(registerViewModel.ManufacturerId);
@@ -74,15 +74,57 @@ public class EquipmentController : Controller
     return RedirectToAction(nameof(List));
   }
 
-  private List<ListManufacturerViewModel> LoadManufacturers()
+  [HttpGet]
+  public ActionResult Edit(string id)
+  {
+    Equipment? equipment = _equipmentRepository.FindById(id);
+
+    if (equipment == null)
+      return RedirectToAction(nameof(List));
+
+    EditEquipmentViewModel editViewModel = new EditEquipmentViewModel(
+      id,
+      equipment.Name,
+      equipment.PurchasePrice,
+      equipment.ManufacturingDate,
+      equipment.Manufacturer.Id
+    );
+
+    ViewBag.Manufacturers = LoadManufacturers();
+
+    return View(editViewModel);
+  }
+
+  [HttpPost]
+  public ActionResult Edit(EditEquipmentViewModel editViewModel)
+  {
+
+    Manufacturer? manufacturer = _manufacturerRepository.FindById(editViewModel.ManufacturerId);
+
+    if (manufacturer == null)
+      return RedirectToAction(nameof(List));
+
+    Equipment updatedEquipment = new Equipment(
+      editViewModel.Name,
+      editViewModel.PurchasePrice,
+      editViewModel.ManufacturingDate,
+      manufacturer
+    );
+
+    _equipmentRepository.Edit(editViewModel.Id, updatedEquipment);
+
+    return RedirectToAction(nameof(List));
+  }
+  
+  private List<ListManufacturersViewModel> LoadManufacturers()
   {
     List<Manufacturer> manufacturers = _manufacturerRepository.FindAll();
 
-    List<ListManufacturerViewModel> listViewModels = [];
+    List<ListManufacturersViewModel> listViewModels = [];
 
     foreach (Manufacturer m in manufacturers)
     {
-      ListManufacturerViewModel viewModel = new(m.Id, m.Name, m.Email, m.Phone);
+      ListManufacturersViewModel viewModel = new(m.Id, m.Name, m.Email, m.Phone);
 
       listViewModels.Add(viewModel);
     }

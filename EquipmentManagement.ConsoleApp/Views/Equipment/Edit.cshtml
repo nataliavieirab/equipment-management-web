@@ -1,39 +1,45 @@
 @using EquipmentManagement.ConsoleApp.Models
-
 @{
-  Layout = "_Layout";
-  ViewBag.Title = "Cadastro de Equipamento";
+    Layout = "_Layout";
+  ViewBag.Title = "Edição de Equipamento";
 
   List<ListManufacturersViewModel> manufacturers = ViewBag.Manufacturers;
 }
 
-<form class="form" action="/Equipment/Register" method="post">
+<form class="form" action="/Equipment/Edit/@Model.Id" method="post">
   
   <div class="form-field">
     <label>Nome</label>
     <br>
-    <input type="text" name="Name">
+    <input type="text" name="Name" value="@Model.Name">
   </div>
 
   <div class="form-field">
     <label>Preço de Aquisição</label>
     <br>
-    <input type="number" name="PurchasePrice" min="0.01" step="0.01">
+    <input type="number" name="PurchasePrice" min="0.01" step="0.01" value="@Model.PurchasePrice">
   </div>
 
   <div class="form-field">
     <label>Data de Fabricação</label>
     <br>
-    <input type="date" name="ManufacturingDate">
+    <input type="date" name="ManufacturingDate" value="@Model.ManufacturingDate">
   </div>
 
     <div class="form-field">
     <label>Fabricante</label>
     <br>
-    <select name="ManufacturerId">
+    <select name="ManufacturerId" value>
       @foreach (ListManufacturersViewModel m in manufacturers) 
       {
-        <option value="@m.Id">@m.Name</option>
+        if (m.Id == Model.ManufacturerId) 
+        {
+          <option value="@m.Id" selected>@m.Name</option>  
+        } 
+        else 
+        {
+          <option value="@m.Id">@m.Name</option>  
+        }
       }
     </select>
   </div>
