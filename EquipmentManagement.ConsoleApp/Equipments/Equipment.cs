@@ -10,7 +10,6 @@ public class Equipment : BaseEntity<Equipment>
   public DateTime ManufacturingDate { get; set; }
   public Manufacturer Manufacturer { get; set; } = null!;
 
-  public Equipment() { }
 
   public Equipment(
       string name,
@@ -25,6 +24,7 @@ public class Equipment : BaseEntity<Equipment>
     Manufacturer = manufacturer;
   }
 
+  public Equipment() { }
   public override List<string> Validate()
   {
     List<string> errors = new List<string>();

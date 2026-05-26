@@ -7,3 +7,10 @@ public record ListEquipmentsViewModel(
   DateTime ManufacturingDate,
   string Manufacturer
 );
+
+public record RegistertEquipmentsViewModel(
+  string Name,
+  decimal PurchasePrice,
+  DateTime ManufacturingDate,
+  string ManufacturerId
+);
