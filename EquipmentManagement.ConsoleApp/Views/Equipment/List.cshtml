@@ -27,7 +27,7 @@
         <td>@e.Id</td>
         <td>@e.Name</td>
         <td>@e.PurchasePrice.ToString("C2")</td>
-        <td>@e.ManufacturingDate.ToShortDateString()</td>
+        <td>@e.ManufacturingDate.ToString("dd/MM/yyyy")</td>
         <td>@e.Manufacturer</td>
       <td>
         <a href="/Equipment/Edit/@e.Id">Editar</a>
