@@ -5,7 +5,7 @@
     ViewBag.Title = "Listagem de Fabricantes";
 }
 
-@model List<ListManufacturerViewModel>
+@model List<ListManufacturersViewModel>
 
 <a class="btn-register" href="/Manufacturer/Register">Cadastrar Novo</a>
 
@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach (ListManufacturerViewModel m in Model)
+    @foreach (ListManufacturersViewModel m in Model)
     {
       <tr>
         <td>@m.Id</td>
