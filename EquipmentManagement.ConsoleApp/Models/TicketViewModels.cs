@@ -35,3 +35,13 @@ public record EditTicketViewModel(
     [Required(ErrorMessage = "O campo \"Equipamento\" deve ser preenchido.")]
     string EquipmentId
 );
+
+public record DeleteTicketViewModel(
+    string Id,
+    string Title,
+    string? Description,
+    string Equipment,
+    DateTime OpeningDate,
+    int ElapsedDays,
+    bool IsComplete
+);

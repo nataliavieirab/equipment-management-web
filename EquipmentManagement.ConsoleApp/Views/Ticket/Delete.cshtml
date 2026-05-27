@@ -1,0 +1,51 @@
+@{
+  Layout = "_Layout";
+  ViewBag.Title = "Exclusão de Chamado";
+}
+
+@model DeleteTicketViewModel;
+
+<form class="form" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+  <p class="form-alert">Deseja realmente excluir este fabricante?</p>
+
+  <div class="form-field">
+    <label asp-for="Title">Título</label>
+    <br>
+    <input asp-for="Title" type="text" disabled>
+  </div>
+
+  <div class="form-field">
+    <label asp-for="Description">Descrição</label>
+    <br>
+    <textarea asp-for="Description" disabled></textarea>
+  </div>
+
+  <div class="form-field">
+    <label asp-for="Equipment">Equipamento</label>
+    <br>
+    <input asp-for="Equipment" type="text" disabled>
+  </div>
+
+  <div class="form-field">
+    <label asp-for="OpeningDate">Data de Abertura</label>
+    <br>
+    <input asp-for="OpeningDate" type="text" asp-format="{0:dd/MM/yyyy}" disabled>
+  </div>
+
+  <div class="form-field">
+    <label asp-for="ElapsedDays">Tempo Decorrido</label>
+    <br>
+    <input asp-for="ElapsedDays" type="text" disabled>
+  </div>
+
+  <div class="form-field">
+    <label>Status</label>
+    <br>
+    <input type="text" value="@(Model.IsComplete ? "Concluído" : "Aberto")" disabled>
+  </div>
+
+  <div class="form-actions">
+    <a asp-action="List">Voltar</a>
+    <button type="submit">Confirmar</button>
+  </div>
+</form>

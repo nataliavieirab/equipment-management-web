@@ -111,7 +111,7 @@ public class TicketController : Controller
 
     return View(editViewModel);
   }
-  
+
   [HttpPost]
   public ActionResult Edit(EditTicketViewModel editViewModel)
   {
@@ -128,7 +128,7 @@ public class TicketController : Controller
     if (!ModelState.IsValid)
     {
       ViewBag.Equipments = LoadEquipments();
-      
+
       return View(editViewModel);
     }
 
@@ -142,7 +142,39 @@ public class TicketController : Controller
 
     return RedirectToAction(nameof(List));
   }
-  
+
+  [HttpGet]
+  public ActionResult Delete(string id)
+  {
+    Ticket? ticket = _ticketRepository.FindById(id);
+
+    if (ticket == null)
+      return RedirectToAction(nameof(List));
+
+    DeleteTicketViewModel deleteViewModel = new DeleteTicketViewModel(
+      ticket.Id,
+      ticket.Title,
+      ticket.Description,
+      ticket.Equipment.Name,
+      ticket.OpeningDate,
+      ticket.ElapsedDays,
+      ticket.IsComplete
+    );
+
+    return View(deleteViewModel);
+  }
+
+  [HttpPost]
+  [ActionName("Delete")]
+  public ActionResult SuccessDelete(DeleteTicketViewModel deleteViewModel)
+  {
+    Ticket? ticket = _ticketRepository.FindById(deleteViewModel.Id);
+
+    if (ticket != null)
+      _ticketRepository.Delete(ticket);
+    
+    return RedirectToAction(nameof(List));
+  }
   private List<SelectListItem> LoadEquipments()
   {
     List<Equipment> equipments = _equipmentRepository.FindAll();
